@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LMA.Data.Interfaces;
+using LMA.Data.Model;
 using LMA.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -38,9 +39,36 @@ namespace LMA.Controllers
             return View(customerVM);
         }
 
-        public IActionResult Index()
+        public IActionResult Delete(int id)
+        {
+            var customer = _customerRepository.GetById(id);
+            _customerRepository.Delete(customer);
+            return RedirectToAction("List");
+        }
+        [HttpGet]
+        public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Customer customer)
+        {
+            _customerRepository.Create(customer);
+            return RedirectToAction("List");
+        }
+
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var customer  =_customerRepository.GetById(id);
+            return View(customer);
+        }
+        [HttpPost]
+        public IActionResult Update(Customer customer)
+        {
+            _customerRepository.Update(customer);
+            return RedirectToAction("List");
         }
     }
 }
