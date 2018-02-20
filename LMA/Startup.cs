@@ -1,6 +1,10 @@
-﻿using LMA.Data.Interfaces;
+﻿using LMA.Data;
+using LMA.Data.Interfaces;
+using LMA.Data.Model;
+using LMA.Data.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,8 +22,9 @@ namespace LMA
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IAuthorRepository, CustomerRepository>();
-            services.AddTransient<IBookRepository, CustomerRepository>();
+            services.AddDbContext<LMADbContext>(options => options.UseInMemoryDatabase("LibraryContext"));
+            services.AddTransient<IAuthorRepository, AuthorRepository>();
+            services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             
             
@@ -47,6 +52,11 @@ namespace LMA
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            DbInitialize.Seed(app);
+
         }
+
+
     }
 }

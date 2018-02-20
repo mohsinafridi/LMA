@@ -1,0 +1,34 @@
+﻿@using LMA.ViewModels;
+@model IEnumerable<CustomerViewModel>
+
+
+<a class="btn btn-success mt-5" style="margin:10px;" asp-controller="Customer" asp-action="Create">Create New Customer</a>
+
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Borrowed Books Counts</th>
+            <th>Edit Customer</th>
+            <th>Delete Customer</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@a.Customer.CustomerId</td>
+                <td>@a.Customer.Name</td>
+                <td>@a.BookCount</td>
+                <td><a class="btn btn-info" asp-area="" asp-controller="Customer" asp-action="Update" asp-route-id="@a.Customer.CustomerId">Edit</a></td>
+                <td><a class="btn btn-danger" asp-area="" asp-controller="Customer" asp-action="Delete" asp-route-id="@a.Customer.CustomerId">Delete</a></td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+
