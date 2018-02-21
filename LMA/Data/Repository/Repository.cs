@@ -55,5 +55,17 @@ namespace LMA.Data.Repository
             _context.Entry(entity).State = EntityState.Modified;
             Save();
         }
+        
+
+       
+        public bool Any(Func<T, bool> predicate)
+        {
+            return _context.Set<T>().Any(predicate);
+        }
+
+        public bool Any()
+        {
+            return _context.Set<T>().Any();
+        }
     }
 }
