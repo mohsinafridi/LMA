@@ -15,12 +15,12 @@ namespace LMA.Data.Repository
 
         }
 
-        public IEnumerable<Book> FindByAuthor(Func<Book, bool> predicate)
+        public IEnumerable<Book> FindWithAuthor(Func<Book, bool> predicate)
         {
             return _context.Books.Include(x => x.Author).Where(predicate);
         }
 
-        public IEnumerable<Book> FindByAuthorAndBorrower(Func<Book, bool> predicate)
+        public IEnumerable<Book> FindWithAuthorAndBorrower(Func<Book, bool> predicate)
         {
             return _context.Books.Include(a => a.Author).Include(a => a.Borrower).Where(predicate);
         }

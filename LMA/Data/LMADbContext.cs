@@ -6,7 +6,6 @@ namespace LMA.Data.Model
     {
         public LMADbContext(DbContextOptions<LMADbContext> option) : base(option)
         {
-
         }
 
         public DbSet<Author> Authors { get; set; }

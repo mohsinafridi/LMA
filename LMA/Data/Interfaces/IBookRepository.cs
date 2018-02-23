@@ -10,8 +10,8 @@ namespace LMA.Data.Interfaces
     {
         IEnumerable<Book> GetAllWithAuthor();
 
-        IEnumerable<Book> FindByAuthor(Func<Book, bool> predicate);
+        IEnumerable<Book> FindWithAuthor(Func<Book, bool> predicate);
 
-        IEnumerable<Book> FindByAuthorAndBorrower(Func<Book, bool> predicate);
+        IEnumerable<Book> FindWithAuthorAndBorrower(Func<Book, bool> predicate);
     }
 }

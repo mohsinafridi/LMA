@@ -16,7 +16,7 @@ namespace LMA.Data
                 // add Customer
                 var mohsin = new Customer { Name = "Mohsin Azam" };
                 var basit = new Customer { Name = "Basit" };
-                var mehak = new Customer { Name = "Mehak" };            
+                var mehak = new Customer { Name = "Mehak" };
                 var hayat = new Customer { Name = "Hayat" };
 
                 context.Cusotmers.Add(mohsin);
@@ -42,6 +42,7 @@ namespace LMA.Data
                     {
                         new Book{ Name ="Jannat k Patay" },
                         new Book{ Name ="abe e Mohsin" },
+                        new Book{ Name ="Abe Zam Zam" },
                     }
                 };
                 context.Authors.Add(author);
@@ -49,8 +50,6 @@ namespace LMA.Data
 
 
                 context.SaveChanges();
-
-                
             }
 
         }
